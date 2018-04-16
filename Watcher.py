@@ -3,7 +3,7 @@
 #encoding=utf-8
 
 #coding:utf-8
-import urllib,sys,http.cookiejar,gzip,re
+import urllib,http.cookiejar,gzip,re
 from io import BytesIO
 
 
