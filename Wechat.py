@@ -12,7 +12,7 @@ class Wechat(object):
 	def send_debug(s,text):
 		bot.send(text, toUserName='filehelper')
 	
-	def send(text,account):
+	def send(s,text,account):
 		s.hold_text=text
 		#获取微信号为account的账号
 		fri = bot.search_friends(wechatAccount=account)[0]
@@ -24,9 +24,11 @@ class Wechat(object):
 		print('log in successfully!')
 	
 	def qrcb(uuid, status, qrcode):
-		open('./QR.PNG','wb').write(qrcode)
+		f=open('./QR.PNG','wb')
+		f.write(qrcode)
+		f.close()
 	
-	def logout():
+	def logout(s):
 		bot.logout()
 	
 	@bot.msg_register(itchat.content.TEXT)

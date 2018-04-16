@@ -16,13 +16,4 @@ def main():
 	if float(mny)<50.0:
 		bot.send('[自动监控]校园卡卡号%s的余额为%s元，请及时充值' %(card,mny),sendto)
 
-def main_test():
-	user='x'
-	card=''
-	logintype=0
-	bot=Wechat.Wechat(user,logintype)
-	mny=Watcher.work(card)
-	text='card:'+card+'mny:'+mny
-	bot.send_debug(text)
-
 main()
