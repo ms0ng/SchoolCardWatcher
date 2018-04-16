@@ -10,9 +10,9 @@ bot=itchat.new_instance()
 class Wechat(object):
 	
 	def send_debug(s,text):
-		itchat.send(text, toUserName='filehelper')
+		bot.send(text, toUserName='filehelper')
 	
-	def send(s,text,account):
+	def send(text,account):
 		s.hold_text=text
 		#获取微信号为account的账号
 		fri = bot.search_friends(wechatAccount=account)[0]
@@ -26,7 +26,7 @@ class Wechat(object):
 	def qrcb(uuid, status, qrcode):
 		open('./QR.PNG','wb').write(qrcode)
 	
-	def logout(s):
+	def logout():
 		bot.logout()
 	
 	@bot.msg_register(itchat.content.TEXT)
@@ -39,4 +39,4 @@ class Wechat(object):
 			bot.auto_login(enableCmdQR=True,qrCallback=Wechat.qrcb,hotReload=True,loginCallback=Wechat.lc,statusStorageDir=user+'.pkl')
 		else:
 			bot.auto_login(enableCmdQR=login,hotReload=True,loginCallback=Wechat.lc,statusStorageDir=user+'.pkl')
-		bot.run()
+		

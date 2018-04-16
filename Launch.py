@@ -5,10 +5,10 @@
 #coding:utf-8
 import Wechat,Watcher,time,sys
 
-#card=sys.argv[1]
-#sendto=sys.argv[2]
-#logintype=sys.argv[3] #0 or another number
-#user=sys.argv[4]
+card=sys.argv[1]
+sendto=sys.argv[2]
+logintype=sys.argv[3] #0 or another number
+user=sys.argv[4]
 
 def main():
 	bot=Wechat.Wechat(user,logintype)
@@ -22,6 +22,7 @@ def main_test():
 	logintype=0
 	bot=Wechat.Wechat(user,logintype)
 	mny=Watcher.work(card)
-	bot.send_debug('卡号'+card+'的余额为'+mny)
+	text='card:'+card+'mny:'+mny
+	bot.send_debug(text)
 
-main_test()
+main()

@@ -23,7 +23,7 @@ def work(id):
 	content=po(url(2),postdata(id),header(2))
 	str=re.findall('value=\"(\d+\.\d{2}).*元',content,re.S)
 	#str=re.findall('玉林高级中学.*缴费金额.*\"(\d+\.\d{2}).*元',content)
-	return str
+	return str[0]
 	
 
 def get(url,header):
