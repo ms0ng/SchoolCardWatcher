@@ -3,12 +3,12 @@
 #encoding=utf-8
 
 #coding:utf-8
-import Wechat,Watcher,time,sys
+import Wechat,Watcher,sys
 
-card=sys.argv[1]
-sendto=sys.argv[2]
-logintype=sys.argv[3] #0 or another number
-user=sys.argv[4]
+#card=sys.argv[1]
+#sendto=sys.argv[2]
+#logintype=sys.argv[3] #0 or another number
+#user=sys.argv[4]
 
 def main():
 	bot=Wechat.Wechat(user,logintype)
@@ -22,7 +22,7 @@ def main_test():
 	logintype=0
 	bot=Wechat.Wechat(user,logintype)
 	mny=Watcher.work(card)
-	text='card:'+card+'mny:'+mny
-	bot.send_debug(text)
+	print('%s的余额%s' %(card,mny))
+	bot.send_debug('[自动监控]校园卡卡号为%s的余额剩余%s元，请及时充值' %(card,mny))
 
-main()
+main_test()
