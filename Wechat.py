@@ -15,11 +15,15 @@ class Wechat(object):
 	def send(s,text,account):
 		s.hold_text=text
 		#获取微信号为account的账号
-		fri = bot.search_friends(wechatAccount=account)[0]
-		#获取备注，昵称，微信号中任意一个匹配account的账号
+		fri = bot.search_friends(wechatAccount=account)
+		#获取备注，昵称，微信号中任意一个匹配account的账号,优先匹配查找到的第一个
+		#删除#fri的警号 # 就可以了
 		#fri = bot.search_friends(name=account)[0]
 		fri.send(text)
 		
+	def keep_login(s):
+		bot.check_login()
+	
 	def lc():
 		print('log in successfully!')
 	
