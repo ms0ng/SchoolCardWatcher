@@ -3,13 +3,13 @@
 #encoding=utf-8
 
 #coding:utf-8
-import Wechat,Watcher,time
-from configparser import Configparser
+import Wechat,Watcher,time,sys
+from configparser import ConfigParser
 
 
 
 def main():
-	cfg=Configparser()
+	cfg=ConfigParser()
 	cfg.read('Config.cfg',encoding='utf-8')
 	card=str(cfg.get('global','card'))
 	sendto=str(cfg.get('global','sendto'))
@@ -29,13 +29,11 @@ def main():
 			bot.send('[自动监控]校园卡卡号%s的余额为%s元，请及时充值' %(card,mny),sendto)
 		last_time=time.time()
 
-def main_test(): #已经没什么卵用的测试函数
-	user='x'
-	card=''
-	logintype=0
-	bot=Wechat.Wechat(user,logintype)
-	mny=Watcher.work(card)
-	print('%s的余额%s' %(card,mny))
-	bot.send_debug('[自动监控]校园卡卡号为%s的余额剩余%s元，请及时充值' %(card,mny))
+def main_test(): 
+	if len(sys.argv)>1 :
+		card=str(sys.argv[1])
+		mny=Watcher.work(card)
+		print('卡号%s的余额为%s元' %(card,mny))
 
+main_test()
 main()
