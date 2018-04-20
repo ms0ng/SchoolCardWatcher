@@ -34,6 +34,7 @@ def main_test():
 		card=str(sys.argv[1])
 		mny=Watcher.work(card)
 		print('卡号%s的余额为%s元' %(card,mny))
+		exit()
 
 main_test()
 main()
